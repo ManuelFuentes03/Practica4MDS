@@ -1,19 +1,21 @@
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Rental {
+public abstract class Rental {
     private Date startDate;
     private Date endDate;
     private Car car;
     private Customer customer;
     private RentalOffice pickUpOffice;
 
-    public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice rentalOffice){
+    public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice){
         this.startDate = startDate;
         this.endDate = endDate;
 
         this.car = car;
         this.customer = customer;
-        this.pickUpOffice = rentalOffice;
+        this.pickUpOffice = pickUpOffice;
     }
 
     public Date getStartDate(){
@@ -48,6 +50,15 @@ public class Rental {
 
     public void setCustomer(Customer customer){
         this.customer = customer;
+    }
+
+    protected boolean customerWithoutOverlap(){
+        boolean overlap = false;
+        List<Rental> rentals = new ArrayList<>();
+        for (Rental r : rentals){
+            if (r.getStartDate() == this.startDate || r.getE) //Terminar, no esta completo
+        }
+        return overlap;
     }
 
     // RentalOffice

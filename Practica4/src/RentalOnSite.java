@@ -4,8 +4,8 @@ public class RentalOnSite extends Rental{
 
     private String comments;
 
-    public RentalOnSite(Date startDate, Date endDate, Car car, Customer customer, RentalOffice rentalOffice, String comments){
-        super(startDate, endDate, car, customer, rentalOffice);
+    public RentalOnSite(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice, String comments){
+        super(startDate, endDate, car, customer, pickUpOffice);
         this.comments = comments;
     }
 

@@ -9,6 +9,7 @@ public class Customer {
     public Customer(String name, String dni){
         this.name = name;
         this.dni = dni;
+        rentals = new Collection();
     }
 
     public String getName(){
@@ -25,40 +26,39 @@ public class Customer {
 
     public void setDni(String dni){
         this.dni = dni;
+    }    
+
+    public Collection<Rental>  getRentals(){
+        return rentals;
     }
 
     protected void addRental(Rental rental){
         this.rentals.add(rental);
+
     }
 
     protected void rmRental(Rental rental){
         this.rentals.remove(rental);
+
     }
 
     public Integer numberOfRentalsWithDifferentOffices() {
-        int numRentals = 0;
-        iterador = new ConcreteWebRentalIterator(rentals);
-        while(iterador.hasNext()){
-            Rental rental = iterador.next();
-            if(rental.getRentalOffice())
-            
-            
+        int numRentals = 0;                                     // Numero de rentas (variable a devolver)
+        iterador = new ConcreteWebRentalIterator(rentals);   // Creamos un iterador de webRentals
+
+        while(iterador.hasNext()){// Mientras el iterador tenga siguiente (la lista contega items)
+            Rental renta = iterator.next();
+            if(renta instanceof WebRental){
+                WebRental webRental = (WebRental)renta;               // Seleccionamos el item
+                RentalOffice deliveryOffice = webRental.getDeliveryOffice();    // Obtenemos la oficina de entregaficina de entrega
+                RentalOffice pickUpOffice = webRental.getRentalOffice();        // Obtenemos la oficina de recogida        
+
+                if(!deliveryOffice.equals(pickUpOffice)){           // Si las oficinas son distintas
+                    numRentals++;                                   // Aumentamos el contador
+                }
+            }
         }
 
         return numRentals;
     }
-/*
-    public int numberOfRentalsWithDifferentOffices() {
-        RentalIterator iterator = createRentalIterator();
-        int count = 0;
-
-        while (iterator.hasNext()) {
-            Rental rental = iterator.next();
-            if (!rental.getPickupOffice().equals(rental.getDropoffOffice())) {
-                count++;
-            }
-        }
-
-        return count;
-    }*/
 }
