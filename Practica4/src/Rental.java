@@ -1,6 +1,4 @@
 import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
 
 public abstract class Rental {
     private Date startDate;
@@ -10,12 +8,15 @@ public abstract class Rental {
     private RentalOffice pickUpOffice;
 
     public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice){
-        this.startDate = startDate;
-        this.endDate = endDate;
 
-        this.car = car;
-        this.customer = customer;
-        this.pickUpOffice = pickUpOffice;
+            this.startDate = startDate;
+            this.endDate = endDate;
+    
+            this.car = car;
+            this.customer = customer;
+            this.pickUpOffice = pickUpOffice;
+        
+        
     }
 
     public Date getStartDate(){
@@ -52,11 +53,12 @@ public abstract class Rental {
         this.customer = customer;
     }
 
+    // Restriccion 1
     protected boolean customerWithoutOverlap(){
         boolean overlap = false;
-        List<Rental> rentals = new ArrayList<>();
-        for (Rental r : rentals){
-            if (r.getStartDate() == this.startDate || r.getE) //Terminar, no esta completo
+        for (Rental r : customer.getRentals()){
+            if (this.startDate.after(r.getStartDate()) && this.startDate.before(r.getEndDate()))
+                overlap = true;
         }
         return overlap;
     }
@@ -69,4 +71,16 @@ public abstract class Rental {
     public void setRentalOffice(RentalOffice rentalOffice){
         this.pickUpOffice = rentalOffice;
     }
+
+    //Restriccion 2
+    protected boolean startDateBeforeEndDate(){
+        return this.startDate.before(this.endDate);
+    }
+
+    // Restriccion 3
+    protected boolean correctPickUpOffice(){
+        RentalOffice carOffice = car.getRentaloffice();
+        return (carOffice.equals(pickUpOffice)) ? true : false;
+    }
+    
 }

@@ -73,4 +73,14 @@ public class RentalOffice{
     protected void rmCar(Car car){
         this.cars.remove(car);
     }
+
+    @Override
+    public boolean equals(Object o){
+        boolean valid = false;
+        if (o.getClass() == this.getClass()){
+            RentalOffice r = (RentalOffice) o;
+            valid = r.getAddress().equals(this.addres);
+        }
+        return valid;
+    }
 }

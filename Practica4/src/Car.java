@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -8,6 +9,7 @@ public class Car{
     private Model model;
     private RentalOffice rentalOffice;
     private List<Rental> rentals;
+    //private Estado estado = new EnServicio();//Inicialmente el coche esta EN servicio
 
     public Car(String licensePlate, Model model, RentalOffice rentalOffice){
         this.licensePlate = licensePlate;
@@ -52,5 +54,11 @@ public class Car{
 
     protected void rmRental(Rental rental){
         this.rentals.remove(rental);
+    }
+
+    public void takeOutOfService(Date backToService){
+        //Comprobar estado
+        //Si estado == SinServicio, no hacemos nada
+        //Si estado == EnServicio, cambiamos a SinServicio
     }
 }

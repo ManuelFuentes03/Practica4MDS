@@ -28,7 +28,18 @@ public class WebRental extends Rental{
         return deliveryOffice;
     }
 
-    public RentalOffice setDeliveryOffice(){
-        return this.deliveryOffice;
+    public void setDeliveryOffice(RentalOffice rental){
+        this.deliveryOffice = rental;
+    }
+
+    protected boolean customerWithoutOverlap(){
+        return true;
+    }
+
+    public boolean horaEntrega(){
+        if(!(deliveryOffice.equals(super.getRentalOffice()))){
+            return deliveryTime <= 13; 
+        }
+        return true;
     }
 }

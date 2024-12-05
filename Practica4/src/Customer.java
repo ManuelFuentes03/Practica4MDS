@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 public class Customer {
 
@@ -9,8 +10,8 @@ public class Customer {
     public Customer(String name, String dni){
         this.name = name;
         this.dni = dni;
-        rentals = new Collection();
-    }
+        rentals = new ArrayList<Rental>();
+    }   
 
     public String getName(){
         return this.name;
@@ -47,7 +48,7 @@ public class Customer {
         iterador = new ConcreteWebRentalIterator(rentals);   // Creamos un iterador de webRentals
 
         while(iterador.hasNext()){// Mientras el iterador tenga siguiente (la lista contega items)
-            Rental renta = iterator.next();
+            Rental renta = iterador.next();
             if(renta instanceof WebRental){
                 WebRental webRental = (WebRental)renta;               // Seleccionamos el item
                 RentalOffice deliveryOffice = webRental.getDeliveryOffice();    // Obtenemos la oficina de entregaficina de entrega
