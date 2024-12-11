@@ -9,7 +9,7 @@ public abstract class Rental {
     // Ejercicio 3
     private Promocion promocion;
 
-    public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice, Promocion promocion){
+    public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice){
 
             this.startDate = startDate;
             this.endDate = endDate;
@@ -18,7 +18,6 @@ public abstract class Rental {
             this.customer = customer;
             this.pickUpOffice = pickUpOffice;
 
-            this.promocion = promocion; 
         
         
     }
