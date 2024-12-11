@@ -6,8 +6,10 @@ public abstract class Rental {
     private Car car;
     private Customer customer;
     private RentalOffice pickUpOffice;
+    // Ejercicio 3
+    private Promocion promocion;
 
-    public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice){
+    public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice, Promocion promocion){
 
             this.startDate = startDate;
             this.endDate = endDate;
@@ -15,6 +17,8 @@ public abstract class Rental {
             this.car = car;
             this.customer = customer;
             this.pickUpOffice = pickUpOffice;
+
+            this.promocion = promocion; 
         
         
     }
@@ -83,4 +87,14 @@ public abstract class Rental {
         return (carOffice.equals(pickUpOffice)) ? true : false;
     }
     
+
+    // Ejercicio3
+    public void setPromocion(Promocion promocion){
+        this.promocion = promocion;
+    }
+
+    public int getPrice(){
+        
+        return
+    }
 }
