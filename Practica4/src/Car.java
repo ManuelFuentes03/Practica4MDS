@@ -9,7 +9,9 @@ public class Car{
     private Model model;
     private RentalOffice rentalOffice;
     private List<Rental> rentals;
-    //private Estado estado = new EnServicio();//Inicialmente el coche esta EN servicio
+    public Estado estado; //Inicialmente el coche esta EN servicio
+    private Date dateBackToService;
+    private Car cocheSustituto;
 
     public Car(String licensePlate, Model model, RentalOffice rentalOffice){
         this.licensePlate = licensePlate;
@@ -17,6 +19,8 @@ public class Car{
         this.model = model;
         this.rentalOffice = rentalOffice;
         this.rentals = new ArrayList<Rental>();
+        this.estado = new EnServicio();
+        this.cocheSustituto = null;
     }
 
     public String getLicensePlate(){
@@ -27,6 +31,10 @@ public class Car{
         this.licensePlate = licensePlate;
     }
 
+    public Estado getEstado(){
+        return this.estado;
+    }
+    
     public Model getModel(){
         return this.model;
     }
@@ -39,15 +47,20 @@ public class Car{
         return this.rentalOffice;
     }
 
+    
     public void setRentalOffice(RentalOffice rentalOffice){
         this.rentalOffice = rentalOffice;
     }
 
     // Rental
-    public Enumeration<Rental> getwebRentals(){
+    public Enumeration<Rental> getRentals(){
         return java.util.Collections.enumeration(this.rentals);
     }
 
+    protected Rental getLastRental(){
+        return this.rentals.get(this.rentals.size()-1);
+    }
+    
     protected void addRental(Rental rental){
         this.rentals.add(rental);
     }
@@ -56,9 +69,26 @@ public class Car{
         this.rentals.remove(rental);
     }
 
-    public void takeOutOfService(Date backToService){
-        //Comprobar estado
-        //Si estado == SinServicio, no hacemos nada
-        //Si estado == EnServicio, cambiamos a SinServicio
+    public Date getDateBackToService(){
+        return this.dateBackToService;
+    }
+
+    public void setDateBackToService(Date date){
+        this.dateBackToService = date;
+    }
+    
+    public Car getCocheSustituto(){
+        return this.cocheSustituto;
+    }
+
+    public void setCocheSustituto(Car cocheSustituto){
+        this.cocheSustituto = cocheSustituto;
+    }
+
+    
+
+    public void takeOutOfService(Date fecha){
+        // NO TOQUEIS ESTO, ES ASI!!!!!!!!
+        estado.takeOutOfService(fecha, this);
     }
 }

@@ -83,4 +83,14 @@ public class RentalOffice{
         }
         return valid;
     }
+
+    //Creo un metodo que me devuelve todos los coches de un mismo modelo que me pasan como parametro el modelo del coche
+    //Devuelve todos los coches que estan en servicio/ null en caso de que no se cumpla
+    protected List<Car> listaCochesDisponibles(Model modelo){
+        List<Car> listaCoches = new ArrayList<>();
+        for(Car c : cars){
+            if(c.getModel() == modelo && c.getEstado() instanceof EnServicio) listaCoches.add(c);
+        }
+        return listaCoches.size()>0 ? listaCoches : null;
+    }
 }
