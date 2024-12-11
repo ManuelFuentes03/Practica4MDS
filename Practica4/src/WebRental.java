@@ -15,6 +15,17 @@ public class WebRental extends Rental{
         this.deliveryTime = 0;
         this.deliveryOffice = deliveryOffice;
     }
+    public WebRental(Date startDate, Date endDate, int deliveryTime, Car car, Customer customer, RentalOffice pickUpOffice, RentalOffice deliveryOffice, Promocion promocion){//Caso en el que nos pasan un deliveryTime no nulo
+        super(startDate, endDate, car, customer, pickUpOffice, promocion);
+        this.deliveryTime = deliveryTime;
+        this.deliveryOffice = deliveryOffice;
+    }
+
+    public WebRental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice, RentalOffice deliveryOffice, Promocion promocion){//Caso de que el deliveryTime sea nulo
+        super(startDate, endDate, car, customer, pickUpOffice, promocion);
+        this.deliveryTime = 0;
+        this.deliveryOffice = deliveryOffice;
+    }
 
     public int getDeliveryTime(){
         return this.deliveryTime;

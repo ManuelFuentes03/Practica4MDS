@@ -1,6 +1,9 @@
-
+import java.util.Date;
 
 public interface Promocion {
-    public int getPrice();
+    
+    public int getDescuento(Car car, Date endDate, Date startDate);
+
+    public int getPromocion();
     
 }

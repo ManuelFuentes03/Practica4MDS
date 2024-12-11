@@ -10,17 +10,27 @@ public abstract class Rental {
     private Promocion promocion;
 
     public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice){
+        this.startDate = startDate;
+        this.endDate = endDate;
 
-            this.startDate = startDate;
-            this.endDate = endDate;
-    
-            this.car = car;
-            this.customer = customer;
-            this.pickUpOffice = pickUpOffice;
+        this.car = car;
+        this.customer = customer;
+        this.pickUpOffice = pickUpOffice;
 
-        
-        
+        this.promocion = null;
     }
+
+    public Rental(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice, Promocion promocion){
+        this.startDate = startDate;
+        this.endDate = endDate;
+
+        this.car = car;
+        this.customer = customer;
+        this.pickUpOffice = pickUpOffice;
+
+        this.promocion = promocion; 
+    }
+
 
     public Date getStartDate(){
         return this.startDate;
@@ -93,7 +103,6 @@ public abstract class Rental {
     }
 
     public int getPrice(){
-        
-        return
+        return promocion.getDescuento(this.getCar(), this.endDate, this.startDate);
     }
 }

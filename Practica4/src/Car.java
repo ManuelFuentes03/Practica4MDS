@@ -85,10 +85,7 @@ public class Car{
         this.cocheSustituto = cocheSustituto;
     }
 
-    
-
     public void takeOutOfService(Date fecha){
-        // NO TOQUEIS ESTO, ES ASI!!!!!!!!
         estado.takeOutOfService(fecha, this);
     }
 }

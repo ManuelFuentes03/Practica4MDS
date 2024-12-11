@@ -9,6 +9,11 @@ public class RentalOnSite extends Rental{
         this.comments = comments;
     }
 
+    public RentalOnSite(Date startDate, Date endDate, Car car, Customer customer, RentalOffice pickUpOffice, String comments, Promocion promocion){
+        super(startDate, endDate, car, customer, pickUpOffice, promocion);
+        this.comments = comments;
+    }
+
     public String getComments(){
         return this.comments;
     }
